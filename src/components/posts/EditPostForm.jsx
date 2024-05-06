@@ -6,6 +6,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { deletePost, selectPostById, updatePost } from '../../redux/postsSlice';
 import { selectAllUsers } from '../../redux/usersSlice';
 
+import { containerStyle, formStyle, titleStyle, labelStyle, button, inputStyle } from '../../constants/Style';
+
 
 const EditPostForm = () => {
     const { postId } = useParams();
@@ -74,7 +76,7 @@ const EditPostForm = () => {
     return (
         <section style={containerStyle}>
             <h2 style={titleStyle}>Edit Post</h2>
-            <form style={formStyle}>
+            <form style={{ ...formStyle, gap: '16px'}}>
                 <div>
                     <label htmlFor='postTitle' style={labelStyle}>Post Title:</label>
                     <input
@@ -83,7 +85,7 @@ const EditPostForm = () => {
                         name='postTitle'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        style={inputStyle}
+                        style={{ ...inputStyle, marginBottom: 0}}
                     />
                 </div>
                 <div>
@@ -92,7 +94,7 @@ const EditPostForm = () => {
                         id='postAuthor'
                         defaultValue={userId}
                         onChange={(e) => setUserID(e.target.value)}
-                        style={inputStyle}
+                        style={{ ...inputStyle, marginBottom: 0 }}
                     >
                         <option value=""></option>
                         {userOptions}
@@ -105,7 +107,7 @@ const EditPostForm = () => {
                         name='postContent'
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
-                        style={{ ...inputStyle, height: '100px' }} // Adjust height of textarea
+                        style={{ ...inputStyle, height: '100px', marginBottom: 0 }} // Adjust height of textarea
                     />
                 </div>
                 <button
@@ -113,7 +115,7 @@ const EditPostForm = () => {
                     onClick={handleSubmit}
                     disabled={!canSave}
                     style={{
-                        ...buttonStyle,
+                        ...button,
                         backgroundColor: canSave ? '#007bff' : '#ccc',
                         cursor: canSave ? 'pointer' : 'not-allowed',
                         pointerEvents: canSave ? 'auto' : 'none',
@@ -131,7 +133,7 @@ const EditPostForm = () => {
                     //     cursor: canSave ? 'pointer' : 'not-allowed',
                     //     pointerEvents: canSave ? 'auto' : 'none',
                     // }}
-                    style={buttonStyle}
+                    style={button}
                 >
                     Delete Post
                 </button>
@@ -140,43 +142,10 @@ const EditPostForm = () => {
     )
 }
 
-const containerStyle = {
-    textAlign: 'center',
-    maxWidth: '400px',
-    margin: 'auto', // Center the section horizontally
-};
-
-const titleStyle = {
-    marginBottom: '20px', // Add space below the title
-};
-
-const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'left',
-    gap: '16px'
-};
-
-const labelStyle = {
-    marginBottom: '8px', // Add space below labels
-};
-
-const inputStyle = {
-    width: '100%',
-    padding: '8px',
-    // marginBottom: '16px', // Add space below inputs
-};
-
-const buttonStyle = {
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    borderRadius: '5px',
-    border: 'none',
-    cursor: 'pointer',
-    outline: 'none',
-    transition: 'background-color 0.3s',
-};
+// const inputStyle = {
+//     width: '100%',
+//     padding: '8px',
+//     // marginBottom: '16px', // Add space below inputs
+// };
 
 export default EditPostForm

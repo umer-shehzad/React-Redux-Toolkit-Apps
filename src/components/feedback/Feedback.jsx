@@ -2,24 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { updateFeedback, deleteFeedback } from './feedbackSlice';
-
-const buttonStyle = {
-  padding: '10px 20px',
-  fontSize: '16px',
-  backgroundColor: '#007bff',
-  color: '#fff',
-  borderRadius: '5px',
-  border: 'none',
-  cursor: 'pointer',
-  outline: 'none',
-  transition: 'background-color 0.3s',
-}
-
-const style = {
-  display: 'flex',
-  justifyContent: 'center',
-  gap: '20px'
-}
+import { button, buttonDiv } from '../../constants/Style';
 
 const Feedback = () => {
   const feedbackMsg = useSelector((state) => state.feedback.message);
@@ -41,9 +24,9 @@ const Feedback = () => {
           />
         </label>
 
-        <div style={style}>
-          <button style={buttonStyle} onClick={() => dispatch(updateFeedback(feedbackContent))}>Update</button>
-          <button style={buttonStyle} onClick={() => dispatch(deleteFeedback())}>Delete</button>
+        <div style={buttonDiv}>
+          <button style={button} onClick={() => dispatch(updateFeedback(feedbackContent))}>Update</button>
+          <button style={button} onClick={() => dispatch(deleteFeedback())}>Delete</button>
         </div>
       </div>
 

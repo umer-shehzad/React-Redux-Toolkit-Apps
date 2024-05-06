@@ -6,6 +6,8 @@ import { selectAllUsers } from '../../redux/usersSlice';
 import { addNewPost } from '../../redux/postsSlice';
 import { useNavigate } from 'react-router-dom';
 
+import { containerStyle, titleStyle, formStyle, labelStyle, button, inputStyle } from '../../constants/Style'; 
+
 const AddPostForm = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -80,7 +82,7 @@ const AddPostForm = () => {
                     onClick={handleSubmit}
                     disabled={!canSave}
                     style={{
-                        ...buttonStyle,
+                        ...button,
                         backgroundColor: canSave ? '#007bff' : '#ccc',
                         cursor: canSave ? 'pointer' : 'not-allowed',
                         pointerEvents: canSave ? 'auto' : 'none',
@@ -93,42 +95,5 @@ const AddPostForm = () => {
     )
 }
 
-const containerStyle = {
-    textAlign: 'center',
-    maxWidth: '400px',
-    margin: 'auto', // Center the section horizontally
-};
-
-const titleStyle = {
-    marginBottom: '20px', // Add space below the title
-};
-
-const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'left',
-};
-
-const labelStyle = {
-    marginBottom: '8px', // Add space below labels
-};
-
-const inputStyle = {
-    width: '100%',
-    padding: '8px',
-    marginBottom: '16px', // Add space below inputs
-};
-
-const buttonStyle = {
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    borderRadius: '5px',
-    border: 'none',
-    cursor: 'pointer',
-    outline: 'none',
-    transition: 'background-color 0.3s',
-};
 
 export default AddPostForm

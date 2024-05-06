@@ -2,24 +2,7 @@ import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, reset, incrementByAmount, decrementByAmount } from './counterSlice';
-
-const style = {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '20px'
-}
-
-const buttonStyle = {
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    borderRadius: '5px',
-    border: 'none',
-    cursor: 'pointer',
-    outline: 'none',
-    transition: 'background-color 0.3s',
-}
+import { button, buttonDiv } from '../../constants/Style';
 
 const Counter = () => {
     const count = useSelector((state) => state.counter.count);
@@ -37,9 +20,9 @@ const Counter = () => {
     return (
         <section> 
             <p style={{ fontSize: '24px' }}>Count: {count}</p>
-            <div style={style}>
-                <button style={buttonStyle} onClick={() => dispatch(increment())}>+</button>
-                <button style={buttonStyle} onClick={() => dispatch(decrement())}>-</button>
+            <div style={buttonDiv}>
+                <button style={button} onClick={() => dispatch(increment())}>+</button>
+                <button style={button} onClick={() => dispatch(decrement())}>-</button>
             </div><br />
 
             <div>
@@ -51,14 +34,14 @@ const Counter = () => {
                 />
             </div><br />
 
-            <div style={style}>
-                <button style={buttonStyle} onClick={() => dispatch(incrementByAmount(value))}>
+            <div style={buttonDiv}>
+                <button style={button} onClick={() => dispatch(incrementByAmount(value))}>
                     Add Amount
                 </button>
-                <button style={buttonStyle} onClick={() => dispatch(decrementByAmount(value))}>
+                <button style={button} onClick={() => dispatch(decrementByAmount(value))}>
                     Subtract Amount
                 </button>
-                <button style={buttonStyle} onClick={resetAll}>
+                <button style={button} onClick={resetAll}>
                     Reset
                 </button>
             </div>
