@@ -7,6 +7,7 @@ import Layout from './components/navbar/Layout';
 import CounterPage from './pages/CounterPage';
 import PostsPage from './pages/PostsPage';
 import Home from './pages/Home';
+import FeedbackPage from './pages/FeedbackPage';
 import AddFormPost from '../src/components/posts/AddPostForm';
 import SinglePost from './components/posts/SinglePost';
 import PostLayout from './components/navbar/PostLayout';
@@ -29,6 +30,10 @@ function App() {
             <Route path='add' element={<AddFormPost />} />
             <Route path=':postId' element={<SinglePost />} />
             <Route path='edit/:postId' element={<EditPostForm />} />
+          </Route>
+
+          <Route path='feedback'>
+            <Route index element={<FeedbackPage />} />
           </Route>
 
           {/* Catch all - replace with 404 component */}

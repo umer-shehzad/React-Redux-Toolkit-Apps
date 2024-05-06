@@ -30,6 +30,9 @@ const Layout = () => {
                     <li>
                         <Link to="/post" style={linkStyle}>Post App</Link>
                     </li>
+                    <li>
+                        <Link to="/feedback" style={linkStyle}>Feedback App</Link>
+                    </li>
                 </ul>
             </nav>
             <Outlet />
